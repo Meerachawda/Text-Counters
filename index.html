@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word & Character Analyzer Pro - Professional Text Analysis Tool</title>
+    <meta name="description" content="Professional text analysis tool with real-time word count, character count, reading time, and advanced features. Perfect for writers, students, and professionals.">
+    <meta name="keywords" content="word counter, character counter, text analyzer, reading time, writing tool">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Word & Character Analyzer Pro">
+    <meta property="og:description" content="Your intelligent, accurate, and professional text analysis companion">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wordanalyzer.pro">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="loader-text">Word Analyzer Pro</div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-edit"></i>
+                <span>Word Analyzer Pro</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#features" class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="particles" id="particles"></div>
+        </div>
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">
+                Welcome to <span class="gradient-text">Word & Character Analyzer Pro</span>
+            </h1>
+            <p class="hero-subtitle">
+                Your intelligent, accurate, and professional text analysis companion
+            </p>
+            <button class="cta-button" id="ctaButton">
+                <span>Start Typing Now</span>
+                <i class="fas fa-arrow-down"></i>
+            </button>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Text Analyzer Section -->
+    <section id="analyzer" class="analyzer-section">
+        <div class="container">
+            <div class="analyzer-header" data-aos="fade-up">
+                <h2>Professional Text Analysis</h2>
+                <p>Get real-time insights about your text with our advanced analyzer</p>
+            </div>
+            
+            <div class="analyzer-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-input-section">
+                    <div class="input-header">
+                        <div class="input-controls">
+                            <button class="control-btn" id="clearBtn" title="Clear Text">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="control-btn" id="downloadBtn" title="Download Text">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="control-btn" id="exportPdfBtn" title="Export as PDF">
+                                <i class="fas fa-file-pdf"></i>
+                            </button>
+                            <button class="control-btn" id="saveBtn" title="Save Draft">
+                                <i class="fas fa-save"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <textarea 
+                        id="textInput" 
+                        placeholder="Start typing or paste your text here to analyze..."
+                        spellcheck="true"
+                    ></textarea>
+                </div>
+                
+                <div class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="stat-icon">
+                                <i class="fas fa-font"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="wordCount">0</span>
+                                <span class="stat-label">Words</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="stat-icon">
+                                <i class="fas fa-keyboard"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="charCount">0</span>
+                                <span class="stat-label">Characters</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card" data-aos="zoom-in" data-aos-delay="450">
+                            <div class="stat-icon">
+                                <i class="fas fa-spell-check"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="charCountNoSpaces">0</span>
+                                <span class="stat-label">Characters (No Spaces)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card" data-aos="zoom-in" data-aos-delay="500">
+                            <div class="stat-icon">
+                                <i class="fas fa-paragraph"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="sentenceCount">0</span>
+                                <span class="stat-label">Sentences</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card" data-aos="zoom-in" data-aos-delay="600">
+                            <div class="stat-icon">
+                                <i class="fas fa-align-left"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="paragraphCount">0</span>
+                                <span class="stat-label">Paragraphs</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card" data-aos="zoom-in" data-aos-delay="700">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="readingTime">0s</span>
+                                <span class="stat-label">Reading Time</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card" data-aos="zoom-in" data-aos-delay="800">
+                            <div class="stat-icon">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="speakingTime">0s</span>
+                                <span class="stat-label">Speaking Time</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-stats" data-aos="fade-up" data-aos-delay="900">
+                        <div class="readability-score">
+                            <h4>Readability Score</h4>
+                            <div class="score-display">
+                                <span id="readabilityScore">0</span>
+                                <span class="score-label" id="readabilityLabel">N/A</span>
+                            </div>
+                        </div>
+                        
+                        <div class="keyword-density">
+                            <h4>Top Keywords</h4>
+                            <div id="keywordList" class="keyword-list">
+                                <span class="no-keywords">Start typing to see keywords</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content" data-aos="fade-up">
+                <div class="about-text">
+                    <h2>About Word Analyzer Pro</h2>
+                    <p class="about-description">
+                        Whether you're a student, writer, blogger, or editor — this tool empowers you with precision. 
+                        Know exactly what you've written, how long it takes to read, and structure your work effortlessly.
+                    </p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item" data-aos="fade-right" data-aos-delay="200">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Download and export support</span>
+                        </div>
+                        <div class="feature-item" data-aos="fade-right" data-aos-delay="300">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Real-time results</span>
+                        </div>
+                        <div class="feature-item" data-aos="fade-right" data-aos-delay="400">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Optimized for performance</span>
+                        </div>
+                        <div class="feature-item" data-aos="fade-right" data-aos-delay="500">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Works offline (PWA-ready)</span>
+                        </div>
+                        <div class="feature-item" data-aos="fade-right" data-aos-delay="600">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Secure and private</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-visual" data-aos="fade-left">
+                    <div class="visual-card">
+                        <div class="card-header">
+                            <div class="card-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="demo-text">
+                                <div class="demo-line"></div>
+                                <div class="demo-line short"></div>
+                                <div class="demo-line"></div>
+                                <div class="demo-line medium"></div>
+                            </div>
+                            <div class="demo-stats">
+                                <div class="demo-stat">
+                                    <span class="demo-number">247</span>
+                                    <span class="demo-label">Words</span>
+                                </div>
+                                <div class="demo-stat">
+                                    <span class="demo-number">1,432</span>
+                                    <span class="demo-label">Characters</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Powerful Features</h2>
+                <p>Everything you need for professional text analysis</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Real-time Analysis</h3>
+                    <p>Get instant feedback as you type with our lightning-fast analysis engine</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Readability Score</h3>
+                    <p>Flesch-Kincaid readability analysis to improve your writing clarity</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3>Keyword Density</h3>
+                    <p>Track keyword usage and optimize your content for better SEO</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-save"></i>
+                    </div>
+                    <h3>Auto-Save Drafts</h3>
+                    <p>Never lose your work with automatic draft saving and restore options</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-export"></i>
+                    </div>
+                    <h3>Export Options</h3>
+                    <p>Download your text in multiple formats: TXT, PDF, and DOCX</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Optimized</h3>
+                    <p>Perfect experience across all devices with responsive design</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-content" data-aos="fade-up">
+                <div class="contact-info">
+                    <h2>Have feedback or questions?</h2>
+                    <p>We'd love to hear from you.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>meerachawda49255@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 8319849255</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Chattisgarh, India</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-edit"></i>
+                        <span>Word Analyzer Pro</span>
+                    </div>
+                    <p>Your intelligent text analysis companion</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="credits.html">Credits</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Word Analyzer Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

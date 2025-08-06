@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Terms and Conditions | Text Counters</title>
+    <style>
+        /* Reset & Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 60px 40px 40px;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        h1 {
+            color: #222;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        /* Stylish Top-Left Button */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: linear-gradient(135deg, #007BFF, #00C6FF);
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: fadeInSlide 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #0056b3, #00aaff);
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(0, 123, 255, 0.4);
+        }
+
+        @keyframes fadeInSlide {
+            0% {
+                transform: translateX(-30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .back-button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            body {
+                padding: 80px 20px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="index.html" class="back-button">← Back to Home</a>
+
+    <!-- Terms Container -->
+    <div class="container">
+        <h1>Terms and Conditions</h1>
+        <p>Welcome to Text Counters. By accessing and using this website, you agree to the following terms and conditions. If you do not agree, please do not use the site.</p>
+
+        <h2>1. Use of Service</h2>
+        <p>Text Counters is a free tool designed to help users count characters, words, and other metrics in text input. It is provided "as-is" without any guarantees or warranties.</p>
+
+        <h2>2. User Responsibility</h2>
+        <p>Users are responsible for the content they enter and analyze on this site. Do not use the service for illegal, harmful, or offensive purposes.</p>
+
+        <h2>3. Privacy</h2>
+        <p>We do not store any text entered into the tool. All operations are performed client-side for your privacy and data security. However, we are not liable for any data loss or misuse.</p>
+
+        <h2>4. Intellectual Property</h2>
+        <p>All code, branding, and designs on this website are the intellectual property of the site owner. Do not copy or redistribute without permission.</p>
+
+        <h2>5. Limitation of Liability</h2>
+        <p>Text Counters is not liable for any damages or losses resulting from the use or inability to use this website.</p>
+
+        <h2>6. Changes to Terms</h2>
+        <p>These terms may be updated from time to time. It is your responsibility to check this page for any changes.</p>
+
+        <h2>7. Contact</h2>
+        <p>If you have questions about these terms, please contact the website administrator.</p>
+    </div>
+</body>
+</html>
